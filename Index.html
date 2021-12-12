@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+            <meta http-equiv="X-UA-Compatible" content="ie=edge" >
+            
+            <title> People</title>
+            <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+ rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+ crossorigin="anonymous">
+    </head>
+    <body><div class="container">
+        <h1 class="display-4 mb-4">Star Wars INFO</h1>
+        <div class="d-flex">
+        <button class="btn btn-people mr-4" id="getPeople">Characters </button>
+        <button class="btn btn-films mr-4" id="getFilms"> Films  </button>
+        <button class="btn btn-ships mr-4"id="getShips"> StarShips </button>
+        <button class="btn btn-vehicles mr-4"id="getVehicles"> Vehicles  </button>
+        <button class="btn btn-species mr-4"id="getSpecies">Species  </button>
+        <button class="btn btn-planets mr-4"id="getPlanets">Planets </button>
+    </div>
+        <div id="output"></div>
+    </body></div>
+        <script> 
+        document.getElementById('getPeople').addEventListener
+        ('click',getPeople);
+        document.getElementById('getFilms').addEventListener
+        ('click',getFilms);
+        document.getElementById('getShips').addEventListener
+        ('click',getShips);
+        document.getElementById('getVehicles').addEventListener
+        ('click',getVehicles);
+        document.getElementById('getSpecies').addEventListener
+        ('click',getSpecies);
+        document.getElementById('getPlanets').addEventListener
+        ('click',getPlanets);
+        
+        
+       function getPeople(){
+            fetch( 'people.json')
+            .then((res) => res.json())
+            .then((data)=> {
+                let output= '<h2>Characters in Star Wars </h2>' 
+                data.forEach(function(pe){
+                    output+= 
+                    ` <ul class="list-group mb-1">
+                        <li class="list-group-item"><h5> Character Name :${pe.name}</h5></li>
+                        <li class="list-group-item">Height: ${pe.height}</li>
+                        <li class="list-group-item">Mass: ${pe.mass}</li>
+                        <li class="list-group-item">Birth Year: ${pe.birth_year}</li>
+                        <li class="list-group-item">Eye: ${pe.eye_color}</li>
+                        <li class="list-group-item">Skin : ${pe.skin_colors}</li>
+                        <li class="list-group-item" >Hair ${pe.hair_colors}</li>
+                        <li class="list-group-item">Homeworld: ${pe.homeworld}</li>
+                        <li class="list-group-item">Gender: ${pe.gender}</li>
+                        <li class="list-group-item">Edited date: ${pe.edited}</li>
+                       <li class="list-group-item">Created date: ${pe.created}</li>
+                        
+                        
+                        
+                        
+ 
+                 </ul>
+                        `;
+                    });
+                document.getElementById('output').innerHTML=output;
+            })
+        }
+  
+        function getFilms(){
+            fetch( 'Films.json')
+            .then((res) => res.json())
+            .then((data)=> {
+                let output='<h1>  Films of Star Wars</h1>';
+                data.forEach(function(fi){
+                    output+=       ` <ul class="list-group mb-1">
+                        <li class="list-group-item"><h5> Film Title:${fi.title}</h5></li>
+                        <li class="list-group-item">Director: ${fi.director}</li>
+                        <li class="list-group-item">Producer ${fi.producer}</li>
+                        <li class="list-group-item">Created: ${fi.created}</li>
+                        <li class="list-group-item">Starships: ${fi.starships}</li>
+                        <li class="list-group-item">Date changed : ${fi.edited}</li>
+                        <li class="list-group-item">Vehicles in film ${fi.vehicles}</li>
+                        <li class="list-group-item">Planets in film: ${fi.planets}</li>
+                        <li class="list-group-item">Episode: ${fi.episod_id}</li>
+                        <li class="list-group-item">Release date: ${fi.release_date}</li>
+                        
+                        
+ 
+                 </ul>
+                        `;
+                });
+                document.getElementById('output').innerHTML=output;
+            })
+        }
+        function getShips(){
+            fetch( 'Ships.json')
+            .then((res) => res.json())
+            .then((data)=> {
+                let output='<h1>  Starships present in Star Wars</h1>';
+                data.forEach(function(ship){
+                    output+= `
+                    <ul class="list-group mb-1">
+                        <li class="list-group-item"><h5> StarShip Class:${ship.starship_class}</h5></li>
+                        <li class="list-group-item">Pilots: ${ship.pilots}</li>
+                        <li class="list-group-item">Hyperdrive: ${ship.hyperdrive_rating}</li>
+                        <li class="list-group-item">Model: ${ship.model}</li>
+                        <li class="list-group-item">MGLT: ${ship.MGLT}</li>
+                        <li class="list-group-item">PK : ${ship.pk}</li>
+                    </ul>
+                        `;
+                });
+                document.getElementById('output').innerHTML=output;
+            })
+        }
+        function getVehicles(){
+            fetch( 'Vehicles.json')
+            .then((res) => res.json())
+            .then((data)=> {
+                let output='<h1> Vehicle present in Star Wars  </h1>';
+                data.forEach(function(veh){
+                    output+= `
+                    <ul class="list-group mb-1">
+                        <li class="list-group-item"><h5> Vehicle Model:${veh.vehicle_class}</h5></li>
+                        <li class="list-group-item">Vehicle Class : ${veh.model}</li>
+                        <li class="list-group-item">Pilot: ${veh.pilot}</li>
+                        <li class="list-group-item">PK: ${veh.pk}</li>
+                     
+                    </ul>
+                        `;
+                });
+                document.getElementById('output').innerHTML=output;
+            })
+        }
+        function getSpecies(){
+            fetch( 'Species.json')
+            .then((res) => res.json())
+            .then((data)=> {
+                let output='<h1> Species peresent in Star Wars </h1>';
+                data.forEach(function(spe){
+                    output+=  ` <ul class="list-group mb-1">
+                        <li class="list-group-item"><h5> Species Name :${spe.name}</h5></li>
+                        <li class="list-group-item">Clasification: ${spe.clasification}</li>
+                        <li class="list-group-item">Designation: ${spe.designation}</li>
+                        <li class="list-group-item">Language: ${spe.language}</li>
+                        <li class="list-group-item">Eye: ${spe.eye_color}</li>
+                        <li class="list-group-item">Skin : ${spe.skin_colors}</li>
+                        <li class="list-group-item">Hair ${spe.hair_colors}</li>
+                        <li class="list-group-item">Homeworld: ${spe.homeworld}</li>
+                        <li class="list-group-item">Lifespan: ${spe.average_lifespan}</li>
+                        <li class="list-group-item">Average Height: ${spe.average_height}</li>
+                        <li class="list-group-item">Edited date: ${spe.editied}</li>
+                        <li class="list-group-item">Created date: ${spe.created}</li>
+                        
+                        
+                        
+                        
+ 
+                 </ul>
+                        `;
+                });
+                document.getElementById('output').innerHTML=output;
+            })
+        }
+        function getPlanets(){
+            fetch( 'Planet.json')
+            .then((res) => res.json())
+            .then((data)=> {
+                let output='<h1> Planeta present in Star Wars</h1>';
+                data.forEach(function(pla){
+                    output+= ` <ul class="list-group mb-1">
+                        <li class="list-group-item"><h5> Planet Name :${pla.name}</h5></li>
+                        <li class="list-group-item">Population: ${pla.population}</li>
+                        <li class="list-group-item">Diameter: ${pla.diameter}</li>
+                        <li class="list-group-item">Rotation Period: ${pla.rotation_period}</li>
+                        <li class="list-group-item">Orbital Period: ${pla.orbital_period}</li>
+                        <li class="list-group-item">Gravity  : ${pla.gravity}</li>
+                        <li class="list-group-item">Surface Water: ${pla.surface_water}</li>
+                        <li class="list-group-item">Climate: ${pla.climate}</li>
+                        <li class="list-group-item">Edited date: ${pla.editied}</li>
+                        <li class="list-group-item">Created date: ${pla.created}</li>
+                        
+                        
+                        
+                        
+ 
+                 </ul>
+                        `;
+                });
+                document.getElementById('output').innerHTML=output;
+            })
+        }
+        
+
+
+        </script>
+    </body>
+
+</html>
