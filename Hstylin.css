@@ -1,0 +1,27 @@
+h1.home{
+    font-family:Monospace ;
+    font-size: 190px;
+    text-align: center;
+    font-weight: bold ;
+    color: rgb(248, 248, 248);
+
+ 
+}
+body{
+font-family:Monospace ;
+
+    background-image: url( Space.jpg);
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold ;
+    color: rgb(248, 248, 248);
+
+
+}
+button.btn{
+    font-size:100px;
+   vertical-align: center;
+    font-weight:bold;
+    font-family:Monospace ;
+    color: rgb(248, 248, 248);
+}
